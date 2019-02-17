@@ -1,51 +1,37 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import ToggleButtonContainer from './container/ToggleButtonContainer';
 import SecurityContainer from './container/SecurityContainer';
 import MovieContainer from './container/MovieContainer';
-import ActorContainer from './container/ActorContainer';
-import Banner from './components/banner';
+import ProfileContainer from './container/ProfileContainer';
+import HomeContainer from './container/HomeContainer';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
-import Link from 'react-router-dom/Link';
-import ProfileBanner from './container/ProfileBanner';
-import Menu from './components/menu';
+import HeaderContainer from './container/HeaderContainer';
+import NewsContainer from './container/NewsContainer';
+import Footer from './components/footer';
 
 class App extends Component {
 
   render() {
-    const style = {
-      maxHeight: 50
-    }
-
     return (
+      <BrowserRouter>
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" style={style} />
-          <ProfileBanner />
-          <Banner content={"Test"} />
-          <BrowserRouter>
-            <React.Fragment>
-              <Menu />
-              <Link to="/movie">Movie</Link>
-              <ToggleButtonContainer />
-              <Switch>
-                <Route path="/security" component={SecurityContainer} />
-                <Route path="/movie" component={MovieContainer} />
-                <Route path="/actor" component={ActorContainer} />
-              </Switch>
-            </React.Fragment>
-          </BrowserRouter>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <React.Fragment>
+          <HeaderContainer />
+        </React.Fragment>
+        <React.Fragment>
+          <Switch>
+            <Route exact path="/" component={HomeContainer} />
+            <Route path="/security" component={SecurityContainer} />
+            <Route path="/movies" component={MovieContainer} />
+            <Route path="/profile" component={ProfileContainer} />
+            <Route path="/news" component={NewsContainer} />
+          </Switch>
+        </React.Fragment>
+        <React.Fragment>
+          <Footer />
+        </React.Fragment>
       </div>
+      </BrowserRouter>
     );
   }
 }

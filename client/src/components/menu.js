@@ -3,6 +3,7 @@ import Link from 'react-router-dom/Link';
 import {connect} from "react-redux";
 import {logout} from "../redux/actions/logout";
 
+
 class Menu extends React.Component {
 
     constructor(props) {
